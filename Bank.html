@@ -1,0 +1,14 @@
+<meta charset='utf-8'>
+
+<script>
+var sum = parseInt(prompt('Введите сумму вклада:'));
+var per = parseInt(prompt('Введите процентную ставку:'));
+var num = parseInt(prompt('Введите срок вклада в годах:'));
+
+
+for (var n = 1; n <= num; n++) {
+	sum = sum + sum*per*0.01;
+	alert('sПрошло лет: ' + n + '. Сумма на счету: ' + sum);
+}
+
+</script>

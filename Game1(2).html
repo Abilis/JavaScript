@@ -1,0 +1,22 @@
+<meta charset="utf-8">
+
+<script>
+
+var name = prompt("Введите Ваше имя: ");
+
+alert("Ну что, " + name + ", сыграем в охотника на уток?");
+
+var gradient = parseInt(prompt("Вижу стаю уток к северу, введите угол выстрела:"));
+
+if ( isNaN(gradient)) {
+	alert(name + ", угол выстрела, в данной ситуации, это число от 0 до 90");
+}  
+else if ( ((gradient >= 10) && (gradient <= 15)) || ((gradient >= 40) && (gradient <= 45)) || ((gradient >= 75) && (gradient <= 80)) ) {
+
+	alert("Молодец, " + name + ", Вы подбили самую крупную из стаи!");
+}  
+
+else {
+	alert("Ну ты и мазила, " + name + " :))))");
+
+} </script>

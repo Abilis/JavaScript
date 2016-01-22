@@ -1,0 +1,31 @@
+<meta charset='utf-8'>
+
+<script>
+var degree;
+//Пусть коридор будет 20-30 и 60-70
+
+var degree = prompt('Введите угол выстрела: ');
+
+var degree = parseInt(degree);
+
+if (((degree > 20) && (degree < 30)) || ((degree > 60) && (degree < 70))) {
+	alert('Одна из мишеней поражена!');
+	if ((degree > 20) && (degree < 30)) {
+		alert('Поражена нижняя мишень!');
+	}
+	else if ((degree > 60) && (degree < 70)) {
+		alert('Поражена верхняя мишень!');
+	}
+
+}
+
+else if (isNaN(degree)) {
+	alert('Нужно ввести угол выстрела в градусах!');
+}
+
+else {
+	alert('Ни одна мишень не поражена :(')
+}
+
+
+</script>

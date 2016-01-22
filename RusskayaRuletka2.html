@@ -1,0 +1,25 @@
+<meta charset='utf-8'>
+
+<script>
+var n = 0;
+
+do {
+	var a = prompt('Пока завершено ' + n + ' раундов. Продолжать?');
+	if ((a == 'Да') || (a == 'да')) {
+		if (Math.random()*6 < 1) {
+			alert('Игра окончена :(');
+			break;
+		}
+		else {
+			n++;
+		}
+	}
+	else {
+		alert('Вы отказались продолжать дальше. Хорошего дня!');
+		break;
+	}
+} while (true);
+
+alert('Всего проведено ' + n + ' раундов');
+
+</script>

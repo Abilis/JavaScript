@@ -1,0 +1,13 @@
+<meta charset='utf-8'>
+
+<script>
+var summa = parseInt(prompt('Введите сумму вклада:'));
+var procent = parseInt(prompt('Введите процентную ставку:'));
+var srok = parseInt(prompt('Введите срок вклада:'));
+
+for (var n = 1; n <= srok; n++) {
+	summa = summa + summa*procent*0.01;
+	alert('Прошло лет: ' + n + '. Сумма на счете: ' + summa);
+}
+
+</script>
