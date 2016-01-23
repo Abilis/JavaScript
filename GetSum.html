@@ -1,0 +1,40 @@
+<meta charset = 'utf-8'>
+
+<script>
+var player = ['A', 'A', 'A', '10', '7'];
+
+function GetSum() {
+	var sum = 0;
+	var numbersA = 0;
+	var cardPlayerI = 0;
+	for (var i = 0; i < player.length; i++) { //ищем количество тузов у игрока
+		cardPlayerI = player[i];
+		if (cardPlayerI == 'A') {
+			numbersA++;
+		}
+	}
+
+		for (i = 0; i < player.length; i++) {
+			cardPlayerI = player[i];
+			if (cardPlayerI == '2' || cardPlayerI == '3' || cardPlayerI == '4' || cardPlayerI == '5' || cardPlayerI == '6' || cardPlayerI == '7' || cardPlayerI == '8' || cardPlayerI == '9' || cardPlayerI == '10') {
+				sum = sum + parseInt(cardPlayerI);
+			}
+			else if (cardPlayerI == 'J' || cardPlayerI == 'Q' || cardPlayerI == 'K') {
+				sum = sum + 10;
+			}
+		}
+		for (i = 1; i <= numbersA; i++) {
+			if (sum <= 10){
+				sum = sum + 11;
+			}
+			else {
+				sum = sum + 1;
+			}
+		}
+
+	return sum;
+}
+
+alert('Сумма карт у игрока: ' + GetSum());
+
+</script>
