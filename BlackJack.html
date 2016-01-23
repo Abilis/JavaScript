@@ -1,0 +1,18 @@
+<meta charset = 'utf-8'>
+
+<script>
+function GetRandomInt(min, max) {
+	return Math.floor(Math.random() * (max - min +1)) + min;
+}
+
+function GetCard() {
+	var cards = ['6', '7', '8', '9', '10', 'J', 'Q', 'K', 'A'];
+	return cards[GetRandomInt(0, cards.length - 1)];
+}
+
+var dealer = [GetCard()];
+var player = [GetCard(), GetCard()];
+
+alert('Дилер: ' + dealer + ', вы - ' + player + '.');
+
+</script>
