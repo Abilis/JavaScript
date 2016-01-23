@@ -14,6 +14,7 @@ function GetSum() {
 	var sum = 0;
 	var numbersA = 0;
 	var cardPlayerI = 0;
+	var Aas11 = 0;
 	for (var i = 0; i < player.length; i++) { //ищем количество тузов у игрока
 		cardPlayerI = player[i];
 		if (cardPlayerI == 'A') {
@@ -30,13 +31,19 @@ function GetSum() {
 				sum = sum + 10;
 			}
 		}
+
 		for (i = 1; i <= numbersA; i++) {
 			if (sum <= 10){
 				sum = sum + 11;
+				Aas11++;
 			}
 			else {
 				sum = sum + 1;
 			}
+		}
+
+		if ((sum > 21) && (Aas11 >= 1)) {
+			sum = sum - 10;
 		}
 
 	return sum;
@@ -49,7 +56,23 @@ function GetStatus() {
 var dealer = [GetCard()];
 var player = [GetCard(), GetCard()];
 
-alert(GetStatus());
+var answer = '';
+
+do {
+	if (GetSum() == 21) {
+		alert(GetStatus() + '. Вы собрали Блэк Джек и автоматически побеждаете! Поздравляем!');
+		break;
+	}
+	else if (GetSum() >= 21) {
+		alert('К сожалению, у Вас перебор :(');
+		break;
+	}
+	answer = prompt(GetStatus() + '. Желаете взять еще карту?');
+	if (answer == 'да') {
+		player.push(GetCard());
+	}
+	alert(GetStatus());
+} while (answer == 'да');
 
 
 </script>
