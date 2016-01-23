@@ -42,11 +42,14 @@ function GetSum() {
 	return sum;
 }
 
+function GetStatus() {
+	return 'Дилер: ' + dealer.join(' ') + '. Вы: ' + player.join(' ');
+}
+
 var dealer = [GetCard()];
 var player = [GetCard(), GetCard()];
 
-alert('Дилер: ' + dealer.join(' ') + '. Вы: ' + player.join(' '));
-alert('Сумма карт у игрока: ' + GetSum());
+alert(GetStatus());
 
 
 </script>
