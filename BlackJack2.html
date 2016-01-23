@@ -11,6 +11,22 @@ function GetCard() {
 }
 
 function GetSum() {
+	var sum = 0;
+	for (var i = 0; i < player.length; i++) {
+		var playerCardI = player[i];
+		if (playerCardI == '2' || playerCardI == '3' || playerCardI == '4' || playerCardI == '5' || playerCardI == '6' || playerCardI == '7' || playerCardI == '8' || playerCardI == '9') {
+			sum = sum + parseInt(playerCardI);
+		}
+		else if (playerCardI == '10' || playerCardI == 'J' || playerCardI == 'Q' || playerCardI == 'K') {
+			sum = sum + 10;
+		}
+		else if (sum <= 10) {
+			sum = sum +11;
+		}
+		else {
+			sum = sum + 1;
+		}
+	}
 
 	return sum;
 }
@@ -19,6 +35,6 @@ var dealer = [GetCard()];
 var player = [GetCard(), GetCard()];
 
 alert('Дилер: ' + dealer.join(' ') + '. Вы: ' + player.join(' '));
-alert('Сумма карт у игрока: ' + sum);
+alert('Сумма карт у игрока: ' + GetSum());
 
 </script>
