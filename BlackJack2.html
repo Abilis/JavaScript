@@ -1,13 +1,24 @@
 <meta charset = 'utf-8'>
 
 <script>
-function GetRandomInt(min, max){
-	return Math.floor(Math.random() * (max - min + 1)) + min;
+function GetRandomInt(min, max) {
+	return Math.floor(Math.random() * (max - min +1 )) + min;
 }
 
 function GetCard() {
 	var cards = ['2', '3', '4', '5', '6', '7', '8', '9', '10', 'J', 'Q', 'K', 'A'];
 	return cards[GetRandomInt(0, cards.length - 1)];
 }
+
+function GetSum() {
+
+	return sum;
+}
+
+var dealer = [GetCard()];
+var player = [GetCard(), GetCard()];
+
+alert('Дилер: ' + dealer.join(' ') + '. Вы: ' + player.join(' '));
+alert('Сумма карт у игрока: ' + sum);
 
 </script>
