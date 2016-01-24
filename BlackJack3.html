@@ -1,6 +1,8 @@
 <meta charset = 'utf-8'>
 
 <script>
+do {
+
 function GetRandomInt(min, max) {
 	return Math.floor(Math.random() * (max - min +1 )) + min;
 }
@@ -49,6 +51,45 @@ function GetSum() {
 	return sum;
 }
 
+function GetSumDealer() {
+	var sum = 0;
+	var numbersA = 0;
+	var cardDealerI = 0;
+	var Aas11 = 0;
+	for (var i = 0; i < dealer.length; i++) { //ищем количество тузов у дилера
+		cardDealerI = dealer[i];
+		if (cardDealerI == 'A') {
+			numbersA++;
+		}
+	}
+
+		for (i = 0; i < dealer.length; i++) {
+			cardDealerI = dealer[i];
+			if (cardDealerI == '2' || cardDealerI == '3' || cardDealerI == '4' || cardDealerI == '5' || cardDealerI == '6' || cardDealerI == '7' || cardDealerI == '8' || cardDealerI == '9' || cardDealerI == '10') {
+				sum = sum + parseInt(cardDealerI);
+			}
+			else if (cardDealerI == 'J' || cardDealerI == 'Q' || cardDealerI == 'K') {
+				sum = sum + 10;
+			}
+		}
+
+		for (i = 1; i <= numbersA; i++) {
+			if (sum <= 10){
+				sum = sum + 11;
+				Aas11++;
+			}
+			else {
+				sum = sum + 1;
+			}
+		}
+
+		if ((sum > 21) && (Aas11 >= 1)) {
+			sum = sum - 10;
+		}
+
+	return sum;
+}
+
 function GetStatus() {
 	return 'Дилер: ' + dealer.join(' ') + '. Вы: ' + player.join(' ');
 }
@@ -71,8 +112,47 @@ do {
 	if (answer == 'да') {
 		player.push(GetCard());
 	}
-	alert(GetStatus());
+
+	//теперь карты получает дилер
+	else {
+		while (GetSumDealer() < 17) {
+			dealer.push(GetCard());
+		}
+
+		//Подсчет суммы карт у игрока и дилера
+		var sumPlayer = GetSum();
+		var sumDealer = GetSumDealer();
+
+		//Подсчет результата дилера
+		if (sumDealer == 21) {
+			alert('У дилера Блэк Джек! ' + GetStatus() + '. Вы проиграли :(');
+			break;
+		}
+		else if (sumDealer > 21) {
+			alert('У дилера перебор! (' + sumDealer + '). ' + GetStatus() + '. Вы побеждаете!');
+			break;
+		}
+		else if (sumDealer == sumPlayer) {
+			alert('Вы и дилер набрали одинаково. (' + sumDealer + '). ' + GetStatus() + '. Ничья.');
+			break;
+		}
+		else if (sumDealer < sumPlayer) {
+			alert('Дилер набрал меньше вас! (Дилер: ' + sumDealer + '. Вы: ' + sumPlayer + '). ' + GetStatus() + '. Вы победили!');
+			break;
+		}
+		else if (sumDealer > sumPlayer) {
+			alert('Дилер набрал больше вас! (Дилер: ' + sumDealer + '. Вы: ' + sumPlayer + '). ' + GetStatus() + '. Вы проиграли! :(');
+			break;
+		}
+
+		alert('Дилер: ' + sumDealer + ', вы - ' + sumPlayer);
+	}
+
 } while (answer == 'да');
+
+var repeatGame = prompt('Желаете сыграть еще?');
+
+} while (repeatGame == 'да');
 
 
 </script>
